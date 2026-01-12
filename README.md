@@ -1,14 +1,14 @@
-# dexkor
 Overview
-
 This project focuses on identifying and fixing MongoDB performance issues in a simulated customer support ticketing system. The objective was to analyze slow queries, design efficient indexes, and replace inefficient search patterns with scalable alternatives.
 
 The emphasis of this assignment is not only on improving execution time, but also on understanding why MongoDB behaves the way it does and how to design for real-world production systems.
+
 
 Dataset
 Database: DEXKOR
 Collection: TICKETS
 Total Documents: 50,000
+
 
 Each ticket document contains:
 Tenant information
@@ -32,6 +32,7 @@ db.TICKETS.find({
 .sort({ createdAt: -1 })
 .limit(20)
 
+
 Issue Observed (Before Indexing)
 MongoDB performed a collection scan
 All 50,000 documents were examined
@@ -40,6 +41,7 @@ Execution time increased with dataset size
 
 Root Cause
 No index existed to support the combination of filtering and sorting fields used in the query.
+
 
 Optimization Applied
 A compound index was created:
